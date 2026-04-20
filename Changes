@@ -1,0 +1,7 @@
+Revision history for heartbeat
+
+0.01 2026-04-20
+    - gated the existing heartbeat skill through docs, tests, coverage, commit, and push
+    - refactored the CLI into a testable module while preserving behavior
+    - documented installation, prompt indicator usage, and heartbeat collector behavior
+

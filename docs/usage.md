@@ -24,6 +24,7 @@ Expected result:
 
 - valid JSON is printed
 - the JSON contains a numeric `now` value
+- the current implementation emits a short truncated value such as `{"now":45}`
 
 ## Prompt And Indicator
 
@@ -39,6 +40,8 @@ When DD is running collectors, the indicator icon template is:
 ❤️[% now %]
 ```
 
+This is meant to help show that DD is still alive through its collector-backed status flow.
+
 ## Uninstall
 
 ```bash
@@ -49,5 +52,6 @@ dashboard skills uninstall heartbeat
 
 - if the skill is disabled, DD should stop using its collector
 - if DD is not running collectors, the heartbeat indicator will not update
+- if DD stops updating status surfaces, the heartbeat value may become stale
 - if the skill is uninstalled, DD should no longer dispatch `heartbeat.check-dd`
 

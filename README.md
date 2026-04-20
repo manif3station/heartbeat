@@ -2,20 +2,20 @@
 
 ## Description
 
-`heartbeat` is a Developer Dashboard skill for testing and using the skill collector path that surfaces a live heartbeat in the prompt/indicator flow.
+`heartbeat` is a Developer Dashboard skill for checking whether DD is still alive through its skill collector path. Once installed, it contributes a collector-backed heartbeat signal that can appear in the prompt or indicator flow and helps show that DD and its managed collectors are still running.
 
 ## Value
 
-It gives the user a small installable skill that demonstrates:
+It gives the user a small operational skill that helps confirm:
 
-- skill installation and removal
-- skill CLI dispatch
-- skill collector configuration through `config/config.json`
-- prompt or indicator visibility when the DD collector loop is running
+- DD skill collectors are still running
+- prompt or indicator rendering is still receiving collector values
+- DD still has an active heartbeat path through the skill command and collector loop
+- the DD web-facing status flow still has fresh collector-backed signal data to render
 
 ## Problem It Solves
 
-A new DD user may want a minimal skill that proves the dashboard collector and prompt integration are active without introducing a larger feature.
+When DD is expected to stay alive in the background, it is useful to have a simple skill-owned heartbeat signal that can show whether the collector loop, prompt integration, and related DD status surface are still active.
 
 ## What It Does To Solve It
 
@@ -27,7 +27,7 @@ This skill adds:
 
 - the dotted command usage `dashboard heartbeat.check-dd`
 - a skill collector declared in `config/config.json`
-- a prompt/indicator heartbeat signal while DD is running its collector loop
+- a prompt or indicator heartbeat signal while DD is running its collector loop
 
 ## Layout
 
@@ -70,10 +70,10 @@ dashboard heartbeat.check-dd
 Expected output shape:
 
 ```json
-{"now":1234567890}
+{"now":45}
 ```
 
-The exact number changes each run.
+The exact number changes each run. The current implementation emits the last two reversed digits from the epoch-derived value, so the payload is intentionally short.
 
 ## Prompt And Indicator Usage
 
@@ -83,7 +83,7 @@ Once the skill is installed and DD is running its managed collectors, the collec
 ❤️[% now %]
 ```
 
-This is intended as a heartbeat signal that shows DD is still running the collector path.
+This is intended as a heartbeat signal that shows DD is still running the collector path and still has live collector-backed status data.
 
 ## Practical Examples
 
@@ -105,7 +105,7 @@ Normal case, inspect the skill metadata:
 dashboard skills usage heartbeat
 ```
 
-Normal case, remove the skill after testing:
+Normal case, remove the skill:
 
 ```bash
 dashboard skills uninstall heartbeat
@@ -115,6 +115,7 @@ dashboard skills uninstall heartbeat
 
 - if the skill is not installed, `dashboard heartbeat.check-dd` will not dispatch
 - if DD collectors are not running, the prompt indicator will not refresh
+- if DD stops updating web-visible collector state, the heartbeat signal will become stale
 - if the skill is disabled, the collector should drop out of the DD collector fleet
 
 ## Documentation
@@ -124,4 +125,4 @@ See:
 - `docs/overview.md`
 - `docs/usage.md`
 - `docs/changes/2026-04-20-gating.md`
-
+- `docs/changes/2026-04-20-purpose-clarification.md`

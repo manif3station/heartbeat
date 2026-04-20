@@ -1,0 +1,13 @@
+{
+   "collectors" : [
+      {
+         "command" : "dashboard heartbeat.check-dd",
+         "interval" : 5,
+         "cwd" : "home",
+         "indicator" : {
+            "icon" : "❤️[% now %]"
+         },
+         "name" : "check-dd"
+      }
+   ]
+}

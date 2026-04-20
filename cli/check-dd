@@ -1,0 +1,5 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+my ($n, $m) = reverse split //, time . '';
+printf '{"now":%d}', "$m$n"; 

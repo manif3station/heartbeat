@@ -1,5 +1,10 @@
 Revision history for heartbeat
 
+0.03 2026-04-28
+    - repackaged the loose heartbeat server checker into the nested DD command heartbeat.server.connected
+    - added Docker tests and 100% coverage for reachable, unreachable, DNS, and usage-error paths
+    - documented how to wire heartbeat.server.connected into ~/.developer-dashboard/config/config.json with user-owned collectors
+
 0.02 2026-04-20
     - corrected the docs to describe heartbeat as an operational DD status skill
     - updated README examples to match the current truncated now payload behavior

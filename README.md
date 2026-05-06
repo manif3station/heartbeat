@@ -58,6 +58,12 @@ Example:
 dashboard skills install git@github.mf:manif3station/heartbeat.git
 ```
 
+## License
+
+`heartbeat` is released under the MIT License.
+
+See [LICENSE](LICENSE).
+
 ## CLI Usage
 
 Direct local development:

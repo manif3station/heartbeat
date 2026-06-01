@@ -46,16 +46,10 @@ This skill adds:
 
 ## Installation
 
-Install the skill through Developer Dashboard from a git repository:
+Install the skill into Developer Dashboard by repo name:
 
 ```bash
-dashboard skills install <git-url-to-heartbeat-skill>
-```
-
-Example:
-
-```bash
-dashboard skills install git@github.mf:manif3station/heartbeat.git
+dashboard skills install heartbeat
 ```
 
 ## License
@@ -168,7 +162,7 @@ Those targets are made-up examples. Replace them with your own server names or I
 Normal case, install the skill:
 
 ```bash
-dashboard skills install git@github.mf:manif3station/heartbeat.git
+dashboard skills install heartbeat
 ```
 
 Normal case, run the CLI command directly through DD:
